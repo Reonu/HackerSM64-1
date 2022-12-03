@@ -1,0 +1,13 @@
+extern const GeoLayout ice_block_geo[];
+extern u8 ice_block_zoo_iceban_ci4[];
+extern u8 ice_block_zoo_iceban_ci4_pal_rgba16[];
+extern Vtx ice_block_ice_block_mesh_layer_5_vtx_0[20];
+extern Gfx ice_block_ice_block_mesh_layer_5_tri_0[];
+extern Vtx ice_block_ice_block_mesh_layer_5_vtx_1[4];
+extern Gfx ice_block_ice_block_mesh_layer_5_tri_1[];
+extern Gfx mat_ice_block_ice_layer5[];
+extern Gfx mat_revert_ice_block_ice_layer5[];
+extern Gfx mat_ice_block_ice_cull_back_layer5[];
+extern Gfx mat_revert_ice_block_ice_cull_back_layer5[];
+extern Gfx ice_block_ice_block_mesh_layer_5[];
+extern Gfx ice_block_material_revert_render_settings[];

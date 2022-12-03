@@ -7,6 +7,7 @@
 
 #define MODEL_MARIO                            0x01        // mario_geo
 #define MODEL_LUIGI                            0x02        // unused
+#define MODEL_ICE_BLOCK                        0xFF     
 
 /* Various static level geometry, the geo layout differs but terrain object presets treat them the same.*/
 

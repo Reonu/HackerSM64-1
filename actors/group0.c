@@ -31,3 +31,6 @@
 #include FONT_C_FILE
 #endif
 #include "lantern/model.inc.c"
+
+#include "ice_block/model.inc.c"
+#include "ice_block/collision.inc.c"

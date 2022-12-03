@@ -335,4 +335,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "lantern/geo_header.h"
 
+#include "ice_block/geo_header.h"
+
+#include "ice_block/collision_header.h"
+
 #endif
