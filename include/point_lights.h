@@ -15,7 +15,7 @@
 
 #define MAX_POINT_LIGHTS_ACTIVE 3
 #define MAX_POINT_LIGHTS 32
-#define MAX_POINT_LIGHT_DIST 3000
+#define MAX_POINT_LIGHT_DIST 30000
 
 STATIC_ASSERT(MAX_POINT_LIGHTS_ACTIVE <= 6, "You cannot apply more than 6 point lights at a time!");
 
