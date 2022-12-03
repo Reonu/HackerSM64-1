@@ -1704,10 +1704,13 @@ void queue_rumble_particles(struct MarioState *m) {
  */
 s32 execute_mario_action(UNUSED struct Object *obj) {
     s32 inLoop = TRUE;
-
+    Vec3f dir = {180, 143, 207};
     // Updates once per frame:
     vec3f_get_dist_and_lateral_dist_and_angle(gMarioState->prevPos, gMarioState->pos, &gMarioState->moveSpeed, &gMarioState->lateralSpeed, &gMarioState->movePitch, &gMarioState->moveYaw);
     vec3f_copy(gMarioState->prevPos, gMarioState->pos);
+
+    set_ambient_light(50, 70, 170);
+    set_directional_light(dir, 170, 170, 50);
 
     if (gMarioState->action) {
 #ifdef ENABLE_DEBUG_FREE_MOVE
