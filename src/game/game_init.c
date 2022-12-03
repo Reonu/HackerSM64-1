@@ -57,6 +57,7 @@ s8 gGamecubeControllerPort = -1; // HackerSM64: This is set to -1 if there's no 
 u8 gIsConsole = TRUE; // Needs to be initialized before audio_reset_session is called
 u8 gCacheEmulated = TRUE;
 u8 gBorderHeight;
+u8 gSwitchPressed;
 #ifdef VANILLA_STYLE_CUSTOM_DEBUG
 u8 gCustomDebugMode;
 #endif
