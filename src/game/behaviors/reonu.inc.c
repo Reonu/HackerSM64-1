@@ -31,10 +31,10 @@ void bhv_ice_block_loop(void) {
     f32 distThreshold;
 
 
-    distThreshold = MAX(200.f, (300.f * o->header.gfx.scale[0]));
+    distThreshold = MAX(200.f, (200.f * o->header.gfx.scale[0]));
     struct Object *redFire = cur_obj_find_nearest_object_with_behavior(bhvFlame, &distRed);
     struct Object *blueFire = cur_obj_find_nearest_object_with_behavior(bhvBlueFlame, &distBlue);
-    if (blueFire != NULL && distBlue < (300.0f * o->header.gfx.scale[0])) {
+    if (blueFire != NULL && distBlue < (200.0f * o->header.gfx.scale[0])) {
         print_text(20,20,"blue");
         if (o->header.gfx.scale[0] < 5.f) {
             if (o->header.gfx.scale[0] < 2.5f) {
