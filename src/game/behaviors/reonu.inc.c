@@ -1,6 +1,6 @@
 // metal_box.inc.c
 #include "game/print.h"
-
+#include "game/platform_displacement.h"
 
 struct ObjectHitbox sIceBlockHitbox = {
     /* interactType:      */ INTERACT_NONE,
@@ -13,6 +13,7 @@ struct ObjectHitbox sIceBlockHitbox = {
     /* hurtboxRadius:     */ 220,
     /* hurtboxHeight:     */ 300,
 };
+extern struct Object *gMarioPlatform;
 
 s32 check_if_moving_over_floor_ice_block(f32 maxDist, f32 offset) {
     struct Surface *floor;
@@ -31,11 +32,11 @@ void bhv_ice_block_loop(void) {
     f32 distThreshold;
 
 
-    distThreshold = MAX(200.f, (200.f * o->header.gfx.scale[0]));
+    distThreshold = MAX(250.f, (250.f * o->header.gfx.scale[0]));
     struct Object *redFire = cur_obj_find_nearest_object_with_behavior(bhvFlame, &distRed);
     struct Object *blueFire = cur_obj_find_nearest_object_with_behavior(bhvBlueFlame, &distBlue);
-    if (blueFire != NULL && distBlue < (200.0f * o->header.gfx.scale[0])) {
-        print_text(20,20,"blue");
+    if (blueFire != NULL && distBlue < (250.0f * o->header.gfx.scale[0])) {
+        //print_text(20,20,"blue");
         if (o->header.gfx.scale[0] < 5.f) {
             if (o->header.gfx.scale[0] < 2.5f) {
                 o->header.gfx.scale[0] = o->header.gfx.scale[1] = o->header.gfx.scale[2] += 0.005f;
@@ -45,7 +46,7 @@ void bhv_ice_block_loop(void) {
             
         }
     } else if (redFire != NULL && distRed < distThreshold) {
-        print_text(20,20,"red");
+        //print_text(20,20,"red");
         if (o->header.gfx.scale[0] > 0.9f) {
             o->header.gfx.scale[0] = o->header.gfx.scale[1] = o->header.gfx.scale[2] -= 0.005f;
         }       
@@ -65,11 +66,11 @@ void bhv_ice_block_loop(void) {
     obj_set_hitbox(o, &sIceBlockHitbox);
     o->oForwardVel = 0.0f;
 
-    if (obj_check_if_collided_with_object(o, gMarioObject) && gMarioStates[0].flags & MARIO_PUSHING) {
+    if (obj_check_if_collided_with_object(o, gMarioObject) && gMarioStates[0].flags & MARIO_PUSHING && gMarioPlatform != o) {
         s16 angleToMario = obj_angle_to_object(o, gMarioObject);
         if (abs_angle_diff(angleToMario, gMarioObject->oMoveAngleYaw) > 0x4000) {
             o->oMoveAngleYaw = (s16)((gMarioObject->oMoveAngleYaw + 0x2000) & 0xc000);
-            if (check_if_moving_over_floor_ice_block(8.0f, 150.0f)) {
+            if (check_if_moving_over_floor_ice_block(8.0f, 90.0f * o->header.gfx.scale[0])) {
                 o->oForwardVel = 12.0f;
                 cur_obj_play_sound_1(SOUND_ENV_METAL_BOX_PUSH);
             }
