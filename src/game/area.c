@@ -246,6 +246,11 @@ void load_area(s32 index) {
             spawn_objects_from_info(0, gCurrentArea->objectSpawnInfos);
         }
 
+        if (g100CoinStarSpawned && !g100CoinStarCollected && gMarioState && (g100CoinStarArea == gCurrAreaIndex)) {
+            struct Object *hundredCoinStar = spawn_object_abs_with_rot(gMarioState->marioObj, 0, MODEL_STAR, bhvSpawnedStarNoLevelExit, g100CoinStarPos[0],g100CoinStarPos[1],g100CoinStarPos[2], 0, 0, 0);
+            hundredCoinStar->oBehParams = g100CoinStarBparams;
+        }
+
         load_obj_warp_nodes();
 #ifndef DISABLE_GRAPH_NODE_TYPE_FUNCTIONAL
         geo_call_global_function_nodes(&gCurrentArea->graphNode->node, GEO_CONTEXT_AREA_LOAD);

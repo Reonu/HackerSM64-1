@@ -72,7 +72,12 @@ void bhv_spawned_star_loop(void) {
             o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
             o->oAngleVelYaw = 0x800;
             if (o->oBehParams2ndByte == SPAWN_STAR_POS_CUTSCENE_BP_SPAWN_AT_MARIO) {
-                spawned_star_set_target_above_mario();             
+                spawned_star_set_target_above_mario();
+                g100CoinStarPos[0] = o->oPosX;
+                g100CoinStarPos[1] = o->oPosY;
+                g100CoinStarPos[2] = o->oPosZ;
+                g100CoinStarBparams = o->oBehParams;
+                g100CoinStarArea = gCurrAreaIndex;
             } else {
                 set_y_home_to_pos();
             }

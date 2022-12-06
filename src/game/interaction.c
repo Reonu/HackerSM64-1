@@ -823,6 +823,10 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         m->interactObj       = obj;
         m->usedObj           = obj;
 
+        if (obj->oBehParams2ndByte == SPAWN_STAR_POS_CUTSCENE_BP_SPAWN_AT_MARIO) {
+            g100CoinStarCollected = TRUE;
+        }
+
 #ifdef GLOBAL_STAR_IDS
         starIndex = (obj->oBehParams >> 24) & 0xFF;
 #else

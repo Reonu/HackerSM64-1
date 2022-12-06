@@ -31,6 +31,7 @@
 #include "puppyprint.h"
 #include "puppylights.h"
 #include "level_commands.h"
+#include "behavior_data.h"
 
 #include "config.h"
 
@@ -143,6 +144,10 @@ s8 sTimerRunning;
 s8 gNeverEnteredCastle;
 // Prevent multiple 100 coin stars from spawning
 u8 g100CoinStarSpawned = FALSE;
+u8 g100CoinStarCollected = FALSE;
+u8 g100CoinStarArea;
+Vec3f g100CoinStarPos;
+u32 g100CoinStarBparams;
 
 struct MarioState *gMarioState = &gMarioStates[0];
 s8 sWarpCheckpointActive = FALSE;
@@ -1165,6 +1170,7 @@ s32 update_level(void) {
 
 s32 init_level(void) {
     s32 fadeFromColor = FALSE;
+    
 #if PUPPYPRINT_DEBUG
     OSTime first = osGetTime();
 #endif
@@ -1176,6 +1182,8 @@ s32 init_level(void) {
     sSpecialWarpDest = WARP_SPECIAL_NONE;
 
     g100CoinStarSpawned = FALSE;
+    g100CoinStarCollected = FALSE;
+    g100CoinStarArea = 0;
 
     if (gCurrCreditsEntry == NULL) {
         gHudDisplay.flags = HUD_DISPLAY_DEFAULT;
