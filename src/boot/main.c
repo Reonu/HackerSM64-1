@@ -517,6 +517,9 @@ void thread1_idle(UNUSED void *arg) {
     osViSetMode(&VI);
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON);
+#ifdef DISABLE_AA
+    osViSetSpecialFeatures(OS_VI_DIVOT_OFF);
+#endif
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
     create_thread(&gMainThread, THREAD_3_MAIN, thread3_main, NULL, gThread3Stack + 0x2000, 100);

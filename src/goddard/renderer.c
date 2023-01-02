@@ -1183,6 +1183,9 @@ void gdm_setup(void) {
     sUpdateYoshiScene = FALSE;
     sUpdateMarioScene = FALSE;
     sCarGdDlNum = 0;
+#ifdef DISABLE_AA
+    osViSetSpecialFeatures(OS_VI_DIVOT_OFF);
+#endif
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreateMesgQueue(&sGdDMAQueue, sGdMesgBuf, ARRAY_COUNT(sGdMesgBuf));
     gd_init();
